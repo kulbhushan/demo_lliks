@@ -1,0 +1,12 @@
+.quiz-checkboxes.question.row
+  .twelve.columns.question-content
+    .panel
+      = auto_oembed(question['content']).html_safe
+
+    - question['options'].each_with_index do |answer, index|
+      .row.option
+        .one.columns.option-validation.align-center
+          %input{:name => "unique", :type => "checkbox", :disabled => true, :checked => answer['valid']}
+        .eleven.columns.option-content
+          %textarea{:disabled => true}
+            = answer['content']

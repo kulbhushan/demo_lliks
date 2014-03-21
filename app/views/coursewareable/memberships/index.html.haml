@@ -1,0 +1,39 @@
+= title _('Manage classroom members')
+
+= head_embed javascript_include_tag('jquery_ujs')
+
+#memberships
+  .eight.columns
+
+    = render('shared/classroom_customization_tabs')
+
+    = form_tag(memberships_path, :id => 'new_membership') do
+      %p
+        = _('Add members by typing their email address below. They will receive an email to join.')
+
+      = email_field_tag :email, nil, :required => true
+
+      %p
+        = submit_tag _('Add member'), :id => 'submit_membership', :class => 'button primary'
+
+    %h4
+      = _('%d members') % @classroom.memberships_count
+    %hr
+
+    %ul#members-list.inline-list
+      - @classroom.memberships.each do |mem|
+        %li
+          .avatar.left
+            = gravatar_image_tag(mem.user.email, :alt => mem.user.name, :gravatar => {:size => 30})
+          %p
+            - if can?(:destroy, mem)
+              %a.icon-remove.right{:href => membership_path(mem), 'data-method' => :delete, :id => "remove-membership-#{mem.id}"}
+            = mem.user.name
+            %br
+            %span.smaller
+              - if mem.user.id == current_user.id
+                = _('You own this classroom.')
+              - else
+                = mem.user.email
+
+  = render(:partial => 'sidebar')

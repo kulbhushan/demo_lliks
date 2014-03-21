@@ -1,0 +1,13 @@
+= title _(@lecture.title)
+= breadcrumbs(render('breadcrumbs'))
+
+#lecture
+  .eight.columns.formatted
+
+    - unless @lecture.requisite.blank?
+      .panel
+        = auto_oembed(@lecture.requisite).html_safe
+
+    = auto_oembed(@lecture.content).html_safe
+
+  = render(:partial => 'sidebar')

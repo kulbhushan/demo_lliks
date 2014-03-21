@@ -1,0 +1,12 @@
+%h3
+  = _('%s graded you on one of the assignments') % @grade.user.name
+
+%p
+  != _('Please visit the link below for the details: %s ') % link_to(@grade.assignment.title, @assignment_url)
+
+- unless @grade.comment.blank?
+  %p
+    = _('%s also left the following feedback:') % @grade.user.name
+
+  %blockquote
+    = @grade.comment

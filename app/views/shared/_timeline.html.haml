@@ -1,0 +1,30 @@
+- last_timestamp = nil
+
+- @timeline.each do |event|
+  - @icon_name = ''
+  - activity_content = render_activity(event, :current_user => current_user)
+  - if last_timestamp != event.created_at.to_date
+    - last_timestamp = event.created_at.to_date
+    .row
+      .twelve.columns
+        %h5
+          - if last_timestamp.today?
+            = _('Today')
+          - elsif last_timestamp == Date.yesterday
+            = _('Yesterday')
+          - else
+            = event.created_at.to_s(:pretty_date)
+        %hr
+
+  .row
+    .two.columns.timestamp.smaller.align-left
+      = event.created_at.to_s(:pretty_time)
+
+    .one.columns.align-right.backgroundify
+      %span{:class => @icon_name}
+
+    .nine.columns.end.activity
+      = activity_content
+      %hr
+
+= paginate(@timeline, {:run_as_xhr => true, :next_title => _('More') })

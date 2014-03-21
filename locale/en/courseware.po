@@ -1,0 +1,140 @@
+# English translations for version package.
+# Copyright (C) 2012 THE version'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the version package.
+# Stas <stas@coursewa.re>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: version 0.0.1\n"
+"POT-Creation-Date: 2012-07-19 20:48+0300\n"
+"PO-Revision-Date: 2012-07-04 17:49+0300\n"
+"Last-Translator: Stas <stas@coursewa.re>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Account recovery"
+msgstr ""
+
+msgid "Change password for %{name}"
+msgstr ""
+
+msgid "Courseware"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Email or password was invalid."
+msgstr ""
+
+msgid "First log in to view this page."
+msgstr ""
+
+msgid "Forgot password"
+msgstr ""
+
+msgid "Hello, %{name}"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Logged out!"
+msgstr ""
+
+msgid "Nevermind, found it..."
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password confirmation"
+msgstr ""
+
+msgid "Password successfully updated."
+msgstr ""
+
+msgid "Password was not updated. Please try again."
+msgstr ""
+
+msgid "Please check your email for instructions."
+msgstr ""
+
+msgid "Please check your email to finish registration."
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Recover"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign me up!"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
+
+msgid "Sign up"
+msgstr ""
+
+msgid "Success! Your account was activated."
+msgstr ""
+
+msgid "Thanks for teaching with Coursewa.re"
+msgstr ""
+
+msgid "To choose a new password, just follow this link: %{url}."
+msgstr ""
+
+msgid "To login to the site, just follow this link: %{url}."
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "We could not find any accounts with this email."
+msgstr ""
+
+msgid "We encountered errors. Please correct the highlighted fields."
+msgstr ""
+
+msgid "Welcome back %{name}!"
+msgstr ""
+
+msgid "Welcome to Courseware"
+msgstr ""
+
+msgid "Welcome to Courseware, %{name}"
+msgstr ""
+
+msgid "You created your account."
+msgstr ""
+
+msgid "You have requested to reset your password."
+msgstr ""
+
+msgid "You have successfully activated your account: %{name}"
+msgstr ""
+
+msgid "You have successfully signed up, your name is: %{name}"
+msgstr ""
+
+msgid "Your Courseware account was activated"
+msgstr ""
+
+msgid "Your Courseware password has been reset"
+msgstr ""
+
+msgid "Your account email"
+msgstr ""

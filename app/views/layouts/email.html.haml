@@ -1,0 +1,49 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
+    <link rel="stylesheet" type="text/css" href="/assets/email.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/email.css" data-immutable="true" />
+
+  %body
+    %center
+      %table#backgroundTable
+        %tr#nav
+          %td{:align => "center"}
+            %table{:cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td#logo{:align => "left", :valign => "center", :width => "50%"}
+                  %a{:href => "http://coursewa.re", :style => "text-decoration: none;", :target => "_blank", :title => "The Courseware Project"}
+                    = image_tag('courseware.png', :alt => 'The Courseware Project')
+                %td#brand{:align => "right", :valign => "center", :width => "50%"} THE COURSEWARE PROJECT
+        %tr
+          %td.spacing.white{:align => "center", :valign => "top"}
+        %tr
+          %td.white{:align => "center", :valign => "center"}
+            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "left", :valign => "center"}
+                  = yield
+        %tr
+          %td.spacing.white{:align => "center", :valign => "top"}
+        %tr#footer
+          %td{:align => "center", :valign => "center"}
+            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td.spacing{:align => "center", :valign => "top"}
+              %tr
+                %td{:align => "left", :valign => "top", :width => "50%"}
+                  %h5
+                    The Courseware Project Team
+                  %small
+                    23rd Emil Isac
+                    %br/
+                    Cluj-Napoca, Cluj, Transylvania, 400023 Romania
+                %td{:align => "right", :valign => "top", :width => "50%"}
+                  %p
+                    %small
+                      With &hearts; from Transylvania.
+              %tr
+                %td.spacing{:align => "center", :valign => "top"}

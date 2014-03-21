@@ -1,0 +1,130 @@
+// Settings file containing Foundation defaults
+
+// Grid Settings
+
+$rowWidth: 960px;
+$columnGutter: 20px;
+$totalColumns: 12;
+// $mobileTotalColumns: 4;
+
+// Colors Settings
+
+// David Magic Black&Whites
+// Grays (slightly tinted)
+// bw(i) = bw(i-1) - 10% B + 2% S
+
+$bw_10:  #f5f6f7; // almost white
+$bw_9d5: #e5e6e7;
+$bw_9:   #d7dbde;
+$bw_8:   #bbbfc4;
+$bw_7:   #9fa5ab;
+$bw_6:   #848b91;
+$bw_5:   #6b7178;
+$bw_4:   #52585e;
+$bw_3d5: #4b4d50;
+$bw_3:   #3b4045;
+$bw_2:   #24282b;
+$bw_1:   #0e1012; // almost black
+
+$mainColor: #998675;
+$secondaryColor: #fe7018;
+$alertColor: #ff4444;
+$successColor: #99cc00;
+$txtColor: $bw_3;
+// $highlightColor: #ffff99;
+$black: #000;
+$white: #fff;
+// $shinyEdge: rgba(#fff, .5);
+// $darkEdge: rgba(#000, .2);
+$inputBorder: $bw_9;
+$navBackgroundColor: #362f2d;
+$yellowHighlightColor: #ffffcc;
+
+// Typography Settings
+
+$headerFontFamily: 'Open Sans', sans-serif;
+$headerFontWeight: 300;
+$headerFontColor: $white;
+$bodyFontFamily: 'Open Sans', sans-serif;
+$bodyFontWeight: normal;
+$bodyFontColor: $bw_3;
+
+// Button Settings
+
+$buttonRadius: 0px;
+// $btnBase: 10px;
+
+// $tinyBtnBase: $btnBase - 5;
+// $smallBtnBase: $btnBase - 3;
+// $largeBtnBase: $btnBase + 5;
+$btnBorderColor: #736357;
+
+// Form Settings
+
+// $formSpacing: 12px;
+// $labelFontWeight: 500;
+// $labelFontColor: lighten(#000, 30%);
+// $labelBtmMargin: 3px;
+// $inputFontColor: rgba(0,0,0,0.75);
+// $inputFontSize: 14px;
+// $inputBgColor: #fff;
+// $inputFocusBgColor: darken(#fff, 2%);
+$inputBorderColor: $inputBorder;
+// $inputFocusBorderColor: darken(#fff, 30%);
+// $inputBorderStyle: solid;
+// $inputBorderWidth: 1px;
+$inputBorderRadius: 0px;
+$fieldsetBorderRadius: 0px;
+
+// Custom Form Settings
+
+// $custFormBorderColor: #ccc;
+// $custFormBgColor: #fff;
+// $custCheckColor: #222;
+// $custSelectCurrentFontColor: #141414;
+// $custSelectBgColor: #fff;
+// $custSelectBorderColor: #ddd;
+// $custSelectTriangleColor: #aaa;
+// $custSelectTriangleColorOpen: #222;
+// $custSelectDropHeight: 200px;
+// $custDropdownBgColor: #fff;
+// $custDropdownBorderColor: darken(#fff, 20%);
+// $custDropdownFontColor: #555;
+// $custDropdownSelectedBgColor: lighten(#2ba6cb, 40%);
+// $custDropdownSelectedFontColor: #000;
+// $custFormDisabledBgColor: #ddd;
+
+// Tab Settings
+
+// $tabHeight: 40px;
+// $tabTermFontSize: 12px;
+// Tab Settings
+
+// $tabHeight: 40px;
+
+// Nav Bar Settings
+
+// $navBarHeight: 40px;
+// $navFlyoutBaseWidth: 250px;
+
+// Modular Scale
+// $ratio: $golden;
+// $baseFontSize: 14px;
+// $importantModNum: 44px;
+
+// Tooltip Settings
+// $hasTipBorderBottom: dotted 1px #ccc;
+// $hasTipFontWeight: bold;
+// $hasTipFontColor: #333;
+// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%);
+// $hasTipFontColorHover: $mainColor;
+// $tooltipBackgroundColor: #000;
+// $tooltipBackgroundOpacity: 0.85;
+// $tooltipFontSize: 12;
+// $tooltipFontWeight: bold;
+// $tooltipFontColor: #fff;
+// $tapToCloseFontSize: 10;
+// $tapToCloseFontWeight: normal;
+// $tapToCloseFontColor: #888;
+// $tooltipFontSizeScreenSmall: 14;
+// $tooltipBackgroundOpacityScreenSmall: 0.85;

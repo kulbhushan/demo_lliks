@@ -1,0 +1,31 @@
+- if logged_in?
+  = render('shared/feedback')
+
+.row
+  .six.columns
+    %a{:href => root_url(:subdomain => false)}
+      = image_tag('courseware.png', :alt => 'The Courseware Project')
+  .three.offset-by-three.columns.align-right
+    - if logged_in?
+      .feedback
+        = link_to(_('Send feedback'), '#', 'data-reveal-id' => 'feedbackModal', :class => 'modal-trigger button simple tiny')
+
+      .small.button.dropdown.naked
+        %a{:href => '#'}
+          .avatar
+            = gravatar_image_tag(current_user.email, :alt => current_user.name, :gravatar => {:size => 32})
+        %span
+        %ul
+          - if logged_in?
+            %li
+              = link_to _('Dashboard'), dashboard_home_url(:subdomain => false)
+            %li
+              = link_to _('Profile'), me_users_url(:subdomain => false)
+            %li
+              = link_to _('Account'), my_account_users_url(:subdomain => false)
+            %li
+              = link_to _('Delete account'), request_deletion_users_url(:subdomain => false)
+            %li
+              = link_to _('Invite a friend'), invite_users_url(:subdomain => false)
+            %li
+              = link_to _('Logout'), logout_path

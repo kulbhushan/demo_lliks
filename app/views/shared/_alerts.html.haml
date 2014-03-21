@@ -1,0 +1,7 @@
+%div#notifications.row
+  %div.six.columns.end.centered
+    - flash.each do |name, msg|
+      - if msg.is_a?(String)
+        %div.align-center{ :class => "alert-box #{name}" }
+          = msg
+          %a.close.icon-remove{ :href => '#' }

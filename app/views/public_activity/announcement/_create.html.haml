@@ -1,0 +1,12 @@
+- @icon_name = 'icon-announce'
+
+%p{ :class => activity.key.parameterize }
+  - if activity.owner
+    - user_name = activity.owner.name
+  - else
+    - user_name = activity.parameters[:user_name]
+
+  - if activity.owner == p[:current_user]
+    = _('You left an announcement... <blockquote>%s</blockquote>' % [activity.parameters[:content]] )
+  - else
+    = _('%s left an announcement... <blockquote>%s</blockquote>' % [user_name, activity.parameters[:content]] )

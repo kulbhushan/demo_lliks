@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/**
+ * Coursewa.re
+ * Summer 2012, 2013
+ */
+
+@import 'fonts';
+
+@import 'compass/css3';
+@import 'modular-scale';
+
+// Load Foundation
+@import 'foundation/functions/all';
+
+@import 'foundation/settings';
+@import 'settings';
+
+@import 'foundation/mixins/all';
+
+@import 'foundation/common/base';
+@import 'foundation/components/grid';
+@import 'foundation/components/modules/reveal';
+@import 'foundation/components/modules/buttons';
+@import 'foundation/components/modules/tabs';
+@import 'foundation/components/modules/ui';
+
+// Courseware layout
+@import 'layout';
+@import 'elements';
+
+// Components
+@import 'components/responses';
+@import 'components/syllabus';
+@import 'components/activities';
+@import 'components/classroom';
+@import 'components/files';
+@import 'components/memberships';
+@import 'components/collaborations';
+@import 'components/breadcrumbs';
+@import 'components/lectures';
+@import 'components/assignments';
+@import 'components/feedback';
+@import 'components/grades';
+@import 'components/invitations';

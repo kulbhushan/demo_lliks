@@ -1,0 +1,53 @@
+#assignment {
+
+  .question.row {
+    padding-top: 20px;
+    margin-top: 20px;
+
+    background: $bw_10;
+    border: 1px solid $bw_9;
+    padding: 20px 10px;
+    margin: 10px 0;
+
+    .icon-remove {
+      visibility: hidden;
+    }
+
+    &:hover {
+      background: $yellowHighlightColor;
+
+      .icon-remove {
+        visibility: visible;
+      }
+    }
+  }
+
+  a {
+    &.alert {
+      color: $alertColor;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.success {
+      color: $successColor;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  .option-validation {
+    input[type="checkbox"] {
+      height: 14px;
+      margin-top: 0;
+    }
+  }
+
+  .redactor_box {
+    margin-bottom: 15px !important;
+  }
+}

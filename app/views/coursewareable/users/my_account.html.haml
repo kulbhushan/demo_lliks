@@ -1,0 +1,41 @@
+= title _('Your account')
+
+- user_plan = current_user.plan
+- plan = Courseware.config.plans[user_plan.slug.to_sym]
+
+#account
+  .eight.columns
+
+    %h4
+      = _('Subscription plan: %s') % user_plan.slug
+    %hr
+
+    - if user_plan.expires_in
+      %p.smaller.align-right
+        = _('This plan expires on %s') % user_plan.expires_in.to_s(:pretty_date_and_year)
+
+    %p
+      = _('This includes the following:')
+
+    .row
+      .twelve.columns.formatted
+        %ul
+          %li
+            - unless user_plan.expires_in.nil?
+              = _('Expires on %s') % user_plan.expires_in.to_s(:pretty)
+            - else
+              = _('Forever free!')
+          %li
+            = _('%d allowed classrooms') % user_plan.allowed_classrooms
+          %li
+            = _('%d allowed collaborators') % user_plan.allowed_collaborators
+          %li
+            = _('%s of allowed space for uploads') % number_to_human_size(user_plan.allowed_space, :locale => :en)
+
+    .row
+      .twelve.columns.align-right
+        %hr.marginless-bottom
+        %h5.marginless-top.highlight.padded-ten.marginless-top
+          = _('Monthly cost: %s') % number_to_currency(plan[:cost])
+
+= render(:partial => 'account_sidebar')

@@ -1,0 +1,26 @@
+.four.columns
+  .row.sidebar
+    - if can?(:contribute, @classroom)
+      = render('sidebar_collaborator')
+    - else
+      %h5
+        = _('Classroom syllabus')
+      %hr
+
+      - unless @syllabus.new_record?
+        %p.smaller
+          = _('Last time updated by %s on %s') % [@syllabus.user.name, @syllabus.updated_at.to_s(:pretty)]
+
+      - unless @classroom.lectures.empty?
+        %p
+          = _('There are %d lectures with a total of %d assignments.') % [@classroom.lectures.count, @classroom.assignments.count]
+        %p
+          = link_to(_('Jump to course structure'), '#lectures-tree')
+
+
+      - unless @classroom.lectures.empty?
+        %h5
+          = _('Lectures')
+        %hr
+
+        = render(:partial => 'shared/sidebar_lectures_listing', :locals => {:lectures => @classroom.lectures, :classroom => @classroom})

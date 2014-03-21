@@ -1,0 +1,54 @@
+.four.columns
+  .row.sidebar
+    - if can?(:contribute, @classroom)
+      = render('sidebar_collaborator')
+    - else
+
+      %h5
+        = _('About this classroom')
+      %hr
+
+      - if @classroom.syllabus and !@classroom.syllabus.intro.blank?
+        = auto_oembed(simple_format(@classroom.syllabus.intro)).html_safe
+      - else
+        = auto_oembed(simple_format(@classroom.description)).html_safe
+
+      - unless @classroom.lectures.empty?
+        %h5
+          = _('Lectures')
+        %hr
+
+        = render(:partial => 'shared/sidebar_lectures_listing', :locals => {:lectures => @classroom.lectures, :classroom => @classroom})
+
+      %h5
+        = _('Your progress')
+      %hr
+
+      - responses_count = current_user.responses.where(:classroom_id => @classroom.id).count
+      - assignments_count = @classroom.assignments.count
+      - coverage = ((responses_count * 100) / assignments_count) if assignments_count > 0
+
+      .nice.success.progress
+        %span.meter{:style => "width: #{coverage.to_i}%"}
+
+      %p.smaller.align-center
+        = _('%d responses out of %d assignments') % [responses_count, assignments_count ]
+
+      %hr
+
+      %ul.itemized
+        %li
+          %span.icon-users
+            = pluralize(@classroom.memberships_count, _('member'), _('members'))
+        %li
+          %span.icon-book
+            = link_to(pluralize(@classroom.lectures.count, _('lecture'), _('lectures')), syllabus_path)
+        %li
+          %span.icon-newspaper
+            = pluralize(@classroom.assignments.count, _('assignment'), _('assignments'))
+        %li
+          %span.icon-docs
+            = pluralize(@classroom.responses.count, _('response'), _('responses'))
+        %li
+          %span.icon-trophy
+            = pluralize(@classroom.grades.count, _('grade'), _('grades'))

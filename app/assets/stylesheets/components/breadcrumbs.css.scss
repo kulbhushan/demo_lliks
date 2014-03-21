@@ -1,0 +1,35 @@
+#breadcrumbs {
+  margin-top: -35px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 60px;
+
+  ul.breadcrumbs {
+    background: none;
+    border: none;
+    padding-left: 10px;
+    border-bottom: 1px solid $bw_9;
+    padding-top: 3px;
+
+    li {
+      a, span {
+        text-transform: none;
+        color: $bw_4;
+        font-size: 11px;
+      }
+
+      a:hover {
+        color: $secondaryColor;
+      }
+
+      &:before {
+        color: $bw_9;
+        font-size: 20px;
+        line-height: 21px;
+        float: left;
+        font-weight: 200;
+      }
+
+    }
+  }
+}

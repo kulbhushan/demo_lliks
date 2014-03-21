@@ -1,0 +1,23 @@
+= title _('Start a new classroom')
+
+#classroom
+  .eight.columns.centered.end
+
+    = form_for(@new_classroom, :url => start_classroom_path) do |f|
+
+      .row
+        .three.columns
+          = f.label :title, _('Name it'), :class => [:right, :inline]
+        .eight.columns.end
+          = f.text_field :title, :required => true
+
+      .row
+        .three.columns
+          = f.label :description, _('Short description'), :class => [:right, :inline]
+        .eight.columns.end
+          = f.text_area :description, :rows => 3, :required => true
+
+      .actions
+        .row
+          .nine.columns.offset-by-three
+            = f.submit _('Start now!'), :id => 'submit_new_classroom', :class => 'button primary'

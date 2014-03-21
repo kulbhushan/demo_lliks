@@ -1,0 +1,10 @@
+-#  Link to the "Next" page
+-#  available local variables
+-#    url:           url to the next page
+-#    current_page:  a page object for the currently displayed page
+-#    total_pages:   total number of pages
+-#    per_page:      number of items to fetch per page
+-#    remote:        data-remote
+%span.next
+  - label = defined?(next_title) ? next_title : _('Next')
+  = link_to_unless current_page.last?, raw(label), url, :rel => 'next', :remote => remote, :class => 'run-as-xhr', 'data-parent-container-id' => 'pagination-container'

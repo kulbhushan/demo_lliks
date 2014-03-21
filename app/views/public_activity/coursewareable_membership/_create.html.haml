@@ -1,0 +1,25 @@
+- @icon_name = 'icon-user-add'
+
+%p{ :class => activity.key.parameterize }
+
+  - if activity.recipient
+    - classroom_title = link_to((_('%s classroom') % activity.recipient.title), root_url(:subdomain => activity.recipient.slug))
+  - else
+    - classroom_title = _('%s classroom (deleted meanwhile)') % activity.parameters[:classroom_title]
+
+  - if activity.trackable and activity.trackable.user and activity.trackable.user == p[:current_user]
+    - member_name = _('you')
+  - elsif activity.trackable and activity.trackable.user
+    - member_name = activity.trackable.user.name
+  - else
+    - member_name = activity.parameters[:member_name]
+
+  - if activity.owner
+    - user_name = activity.owner.name
+  - else
+    - user_name = activity.parameters[:user_name]
+
+  - if activity.owner == p[:current_user]
+    = _('You added %s to %s members.' % [member_name, classroom_title])
+  - else
+    = _('%s added %s to %s members.' % [user_name, member_name, classroom_title])

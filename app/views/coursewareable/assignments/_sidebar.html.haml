@@ -1,0 +1,46 @@
+.four.columns
+  .row.sidebar
+    - if can?(:contribute, @classroom)
+      = render('sidebar_collaborator')
+    - else
+      %h5
+        = _('About this assignment')
+      %hr
+
+      %p.smaller
+        = _('Last time updated by %s on %s') % [@assignment.user.name, @assignment.updated_at.to_s(:pretty)]
+
+      %p
+        != _('This assignment relates to %s lecture.') % link_to(@lecture.title, lecture_path(@lecture))
+
+      %p
+        - assignments_count = pluralize(@lecture.assignments.count, _('assignment'), _('assignments'))
+        - responses_count = pluralize(@lecture.responses.count, _('response'), _('responses'))
+        - if @lecture.assignments.count > 1
+          = _('There are %s more with %s for this lecture.') % [assignments_count, responses_count]
+        - elsif @lecture.assignments.count == 1
+          = _('There is %s more with %s for this lecture.') % [assignments_count, responses_count]
+        - else
+          = _('This is the first assignment for this lecture.')
+
+      - responses = @assignment.responses.where(:user_id => current_user.id)
+      - if responses.empty?
+        %p.icon-docs
+          != _('You did not respond to this lecture assignment. You can %s.') % link_to(_('do it now'), new_lecture_assignment_response_path(@lecture, @assignment), :id => 'assignment-add-response')
+      - else
+        - response = responses.first
+        %p.icon-docs
+          = _('You already responded to this lecture assignment.')
+
+        %p.icon-stats
+          != _('%s coverage is <strong>%d</strong>.') % [link_to(_('Your response'), lecture_assignment_response_path(@lecture, @assignment, response)), response.coverage]
+          - if response.stats
+            - correct = response.stats[:all] - response.stats[:wrong]
+            != _('There were %d correct answers out of %d possible.') % [correct, response.stats[:all]]
+
+      - grades = @assignment.grades.where(:receiver_id => current_user.id)
+      - unless grades.empty?
+        - format = '%' if grades.first.form == 'percentage'
+        %p.icon-hammer
+          != _('Your grade for this assignment is <strong>%s%s</strong>, added by %s on %s.') % [grades.first.mark, format, grades.first.user.name, grades.first.updated_at.to_s(:pretty_date)]
+

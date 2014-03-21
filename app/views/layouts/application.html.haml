@@ -1,0 +1,38 @@
+!!! 5
+%html
+  %head
+    %title
+      = content_for?(:title) ? yield(:title) : 'Welcome'
+      &bull; The Courseware Project
+
+    = favicon_link_tag('/favicon.png', :type => 'image/png')
+
+    %meta{ :charset => 'utf-8' }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge,chrome=1' }
+    %meta{ :name => 'viewport', :content => 'width=device-width' }
+    %meta{ :name => :generator, :content => 'Coursewa.re' }
+
+    /[if lt IE 9]
+      %script{ :src => 'http://html5shiv.googlecode.com/svn/trunk/html5.js' }
+
+    = stylesheet_link_tag 'application'
+
+  %body
+    %header{:role => :banner}
+      %nav{:role => :navigation}
+        .row
+          .six.columns
+            %a{:href => coursewareable.root_url}
+              = image_tag('courseware.png', :alt => 'The Courseware Project')
+          .six.columns.align-right
+      #heading
+        %h2
+          = yield(:title)
+
+    .wrap
+      %section#content{:role => :main}
+        %div.row{ :id => "#{controller.action_name}-#{controller.controller_name}"}
+
+          = yield
+
+  = render('shared/footer')

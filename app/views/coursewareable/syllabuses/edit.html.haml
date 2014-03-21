@@ -1,0 +1,27 @@
+= title _('Updating %s classroom syllabus') % @classroom.title
+= head_embed javascript_include_tag('editor')
+= head_embed stylesheet_link_tag('editor')
+
+#syllabus
+  .eight.columns
+
+    = form_for(@syllabus, :url => syllabus_path) do |f|
+      %p
+        = f.label :title, _('Title')
+        = f.text_field :title, :required => true
+
+      %p
+        = f.label :intro, _('Short Description')
+        = f.text_area :intro, :class => 'small', :required => true, :rows => nil
+
+      %p
+        = f.label :intro, _('Complete Description')
+        = f.text_area :content, :class => 'wysiwyg-full', :required => true
+
+      %p
+        = hidden_field_tag :assetable_type, @syllabus.class, :class => 'assetable_type'
+        = hidden_field_tag :assetable_id, @syllabus.id, :class => 'assetable_id'
+        = f.submit _('Update Syllabus'), :id => 'submit_syllabus', :class => 'button primary'
+        = link_to _('Cancel'), syllabus_path, :class => 'pull right'
+
+  = render('editor_sidebar')

@@ -1,0 +1,32 @@
+= title _('Update %s\'s grade') % @grade.receiver.name
+= breadcrumbs(render('breadcrumbs'))
+
+#grade
+  .eight.columns
+
+    %h4
+      %span.avatar
+        = gravatar_image_tag(@grade.receiver.email, :alt => @grade.receiver.name, :gravatar => { :size => 25 })
+      = _('%s grade') % @grade.receiver.name
+    %hr
+
+    = form_for(@grade, :url => lecture_assignment_grade_path) do |f|
+      .row
+        .four.columns
+          = f.label :form, _('Format'), :class => 'left four inline'
+          = f.select :form, @forms, {:selected => @grade.form}, {:required => true, :class => 'eight inline'}
+
+        .three.columns.align-right
+          = f.label :mark, _('Grade'), :class => 'left six inline'
+          = f.text_field :mark, {:required => true, :class => 'five right inline'}
+        .five.columns.align-right
+
+      %p
+        = f.label :comment, _('If you have feedback to add, fill in below')
+        = f.text_area :comment, :rows => 4
+
+      %p
+        = f.submit _('Save'), :id => 'update_grade', :class => 'button primary'
+        = link_to _('Cancel'), lecture_assignment_grades_path, :class => 'pull right'
+
+  = render(:partial => 'sidebar')

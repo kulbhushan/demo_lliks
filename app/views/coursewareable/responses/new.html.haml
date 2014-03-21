@@ -1,0 +1,39 @@
+= title _('You are about to leave a new response')
+= head_embed javascript_include_tag('editor')
+= head_embed stylesheet_link_tag('editor')
+= breadcrumbs(render('breadcrumbs'))
+
+.row#response
+  .eight.columns
+
+    .hide.assignment_content
+      %h4.marginless-top
+        = @assignment.title
+      %hr
+      .formatted
+        = auto_oembed(@assignment.content).html_safe
+
+    %h4.marginless-top
+      = _('Your response')
+    %hr
+
+    = form_for(@response, :url => lecture_assignment_responses_path) do |f|
+      %p
+        = f.text_area :content, :class => 'wysiwyg', :required => true
+
+      - unless @assignment.quiz.blank?
+        %h5
+          = _('Please also answer the questions below')
+        %hr
+
+        - @assignment.quiz.each_with_index do |question, question_id|
+          .panel
+            = render(:partial => "quiz_#{question['type']}", :locals => {:question => question, :question_id => question_id, :show_results => false})
+
+      %p
+        = hidden_field_tag :assetable_type, @response.class, :class => 'assetable_type'
+        = hidden_field_tag :assetable_id, @response.id, :class => 'assetable_id'
+        = f.submit _('Create'), :id => 'submit_response', :class => 'button primary'
+        = link_to _('Cancel'), lecture_assignment_path(@assignment.lecture, @assignment), :class => 'pull right'
+
+  = render('sidebar_new')

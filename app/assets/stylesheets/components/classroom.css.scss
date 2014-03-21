@@ -1,0 +1,79 @@
+body.customized {
+  header {
+    #heading {
+      background: $navBackgroundColor image-url('bg-texture.png') top repeat-x;
+      padding-top: 0;
+      height: 180px;
+
+      .custom {
+        height: 180px;
+        margin-bottom: -60px;
+      }
+    }
+  }
+}
+
+nav#classroom-menu {
+  height: 50px;
+  overflow: hidden;
+  border-bottom: 1px solid $bw_9d5;
+
+  ul {
+    list-style: none;
+
+    li {
+      display: block;
+      float: left;
+      padding-right: 20px;
+      padding-left: 20px;
+      margin-right: 10px;
+
+      a {
+        font-size: 14px;
+        text-decoration: none;
+        color: $bodyFontColor;
+        line-height: 50px;
+        display: block;
+
+        &:hover {
+          color: $bw_1;
+        }
+      }
+
+      &.current {
+        margin-right: 10px;
+        height: 50px;
+        border-bottom: 3px solid $mainColor;
+      }
+
+      &:hover {
+        height: 50px;
+        border-bottom: 3px solid $secondaryColor;
+
+        a {
+          color: $secondaryColor !important;
+        }
+      }
+
+      &:first-child, &:first-child.current {
+        padding-left: 20px;
+        margin-left: -20px;
+      }
+    }
+  }
+}
+
+#content {
+  .sidebar {
+    .oembed-data iframe {
+      max-width: 100%;
+    }
+
+    .classrooms-listing {
+      .backgroundify i {
+        color: $bw_9;
+      }
+    }
+
+  }
+}

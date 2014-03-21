@@ -1,0 +1,176 @@
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.button {
+  text-transform: uppercase;
+  border: 1px solid $btnBorderColor;
+
+  &.simple {
+    background: $white;
+    border: 1px solid $bw_9d5;
+  }
+}
+
+.naked {
+  background: none;
+  border: none;
+  @include box-shadow(none);
+  &:hover {
+    background: none;
+    border: none;
+    @include box-shadow(none);
+  }
+}
+
+.avatar img {
+  @include border-radius(60px);
+}
+
+.actions .columns.end {
+  border-top: 1px solid $bw_9;
+}
+
+.actions .row .columns .row .columns {
+  margin-top: 13px;
+}
+
+.actions .row .columns {
+  margin-top: 10px;
+
+  .row .columns {
+    margin-top: 10px;
+  }
+}
+
+.actions .row:first-child .columns {
+  margin-top: 0;
+
+  .row .columns {
+    margin-top: 13px;
+  }
+}
+
+.align-to-button {
+  margin-top: 8px;
+}
+
+.heart {
+  font-size: 14px;
+  color: $alertColor;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+
+.one-pixel {
+  height: 1px;
+  overflow: hidden;
+}
+
+.smaller {
+  font-size: 11px !important;
+}
+
+hr {
+  margin: 5px 0 15px;
+}
+
+dl dd {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.marginless-top {
+  margin-top: 0 !important;
+}
+
+.marginless-bottom {
+  margin-bottom: 0 !important;
+}
+
+.marginless-left {
+  margin-left: 0 !important;
+}
+
+.marginless-right {
+  margin-right: 0 !important;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.highlight {
+  background: $yellowHighlightColor;
+}
+
+.padded-ten {
+  padding: 10px;
+}
+
+.padded-top-ten {
+  padding-top: 10px;
+}
+
+.no-listing-style {
+  list-style: none;
+}
+
+.timestamp {
+  font-size: 10px;
+  color: $bw_7;
+}
+
+.panel {
+  background: $bw_10;
+  border: 1px solid $bw_9;
+}
+
+table thead {
+  background: $bw_10;
+
+  tr th {
+    font-weight: normal;
+    color: $txtColor;
+  }
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'courseware';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  opacity: 0.8;
+/* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+/* Animation center compensation - magrins should be symmetric */
+/* remove if not needed */
+  margin-left: 0.2em;
+/* you can be more comfortable with increased icons size */
+/* font-size: 120%; */
+/* Uncomment for 3D effect */
+/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+a[class^="icon-"],
+a[class*=" icon-"] {
+  color: $bodyFontColor;
+  text-decoration: none !important;
+  &:hover {
+    color: $secondaryColor;
+  }
+}

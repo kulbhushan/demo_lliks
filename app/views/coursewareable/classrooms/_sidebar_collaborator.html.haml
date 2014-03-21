@@ -1,0 +1,34 @@
+%h5
+  - if can?(:update, @classroom)
+    %a.icon-settings.right{:href => edit_classroom_path, :title => _('Manage this classroom')}
+  = _('About this classroom')
+%hr
+
+- if @classroom.syllabus and @classroom.syllabus.intro
+  = auto_oembed(simple_format(@classroom.syllabus.intro)).html_safe
+- else
+  %p
+    != _('Next: %s.') % link_to(_('update the syllabus'), edit_syllabus_path)
+
+- if current_page?(dashboard_classroom_path)
+  %p.icon-announce
+    != _('Got something important to say, %s.') % link_to(_('write an announcement'), '#', :class => 'expands', 'data-expand-target' => '#announce', 'data-look-allover' => 'true' )
+
+%hr
+
+%ul.itemized
+  %li
+    %span.icon-users
+      = link_to(pluralize(@classroom.memberships_count, _('member'), _('members')), memberships_path)
+  %li
+    %span.icon-book
+      = link_to(pluralize(@classroom.lectures.count, _('lecture'), _('lectures')), syllabus_path)
+  %li
+    %span.icon-newspaper
+      = pluralize(@classroom.assignments.count, _('assignment'), _('assignments'))
+  %li
+    %span.icon-docs
+      = pluralize(@classroom.responses.count, _('response'), _('responses'))
+  %li
+    %span.icon-trophy
+      = pluralize(@classroom.grades.count, _('grade'), _('grades'))

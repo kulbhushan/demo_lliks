@@ -1,0 +1,18 @@
+- @icon_name = 'icon-book'
+
+%p{ :class => activity.key.parameterize }
+
+  - if activity.trackable and activity.trackable.classroom
+    - lecture_title = link_to(_('lecture'), lecture_url(activity.trackable, :subdomain => activity.trackable.classroom.slug))
+  - else
+    - lecture_title = _('lecture (deleted meanwhile)')
+
+  - if activity.owner
+    - user_name = activity.owner.name
+  - else
+    - user_name = activity.parameters[:user_name]
+
+  - if activity.owner == p[:current_user]
+    = _('You added a new %s.' % lecture_title )
+  - else
+    = _('%s added a new %s.' % [user_name, lecture_title])

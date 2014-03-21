@@ -1,0 +1,21 @@
+- @icon_name = 'icon-newspaper'
+%p{ :class => activity.key.parameterize }
+  - if activity.trackable and activity.trackable.lecture
+    - lecture_link = link_to(_('lecture'), lecture_url(activity.trackable.lecture, :subdomain => activity.trackable.classroom.slug))
+  - else
+    - lecture_link = _('lecture (deleted meanwhile)')
+
+  - if activity.recipient
+    - classroom_title = _('%s classroom') % activity.recipient.title
+  - else
+    - classroom_title = _('%s classroom') % activity.parameters[:classroom_title]
+
+  - if activity.owner
+    - user_name = activity.owner.name
+  - else
+    - user_name = activity.parameters[:user_name]
+
+  - if activity.owner == p[:current_user]
+    = _('You added a new assignment to %s %s.' % [classroom_title, lecture_link] )
+  - else
+    = _('%s added a new assignment to %s %s.' % [user_name, classroom_title, lecture_link] )

@@ -1,0 +1,18 @@
+#files {
+  h5:first-child {
+    margin-top: 5px;
+  }
+
+  .timestamp {
+    line-height: 25px;
+  }
+
+  .backgroundify span {
+    line-height: 25px;
+    position: relative;
+    right: -10px;
+    z-index: 1;
+    font-size: 14px;
+    color: $bw_9;
+  }
+}

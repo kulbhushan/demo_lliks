@@ -1,0 +1,23 @@
+- if current_user == @response.user
+  - user_name = _('Your')
+- else
+  - user_name = @response.user.name
+
+= title _('%s response') % user_name
+= head_embed javascript_include_tag('jquery_ujs')
+= breadcrumbs(render('breadcrumbs'))
+
+#response
+  .eight.columns.formatted
+
+    = auto_oembed(@response.content).html_safe
+
+    - unless @response.answers.blank?
+      %h5
+        = _('Quiz answers')
+
+      - @response.answers.each_with_index do |question, question_id|
+        .panel
+          = render(:partial => "quiz_#{question['type']}", :locals => {:question => question, :question_id => question_id, :show_results => true})
+
+  = render('sidebar')

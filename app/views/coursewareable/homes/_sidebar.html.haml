@@ -1,0 +1,23 @@
+.four.columns
+  .row.sidebar
+    %h5
+      = _('Your Classrooms')
+    %hr
+
+    %ul.itemized.classrooms-listing
+      - if can? :create, current_user.created_classrooms.build
+        %li
+          %strong
+            = link_to('Start a new classroom', start_classroom_path)
+
+      - current_user.classrooms.each do |classroom|
+        %li
+          = link_to(classroom.title, root_url(:subdomain => classroom.slug))
+          - if classroom.owner.eql?(current_user)
+            %span.backgroundify.right
+              %i.icon-star
+          - elsif classroom.collaborators.include?(current_user)
+            %span.backgroundify.right
+              %i.icon-users
+          %p
+            = classroom.description.html_safe

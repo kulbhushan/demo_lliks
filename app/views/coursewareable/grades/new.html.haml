@@ -1,0 +1,33 @@
+= title _('Add a new grade')
+= breadcrumbs(render('breadcrumbs'))
+
+#grade
+  .eight.columns
+
+    %h4
+      = _('Add a new grade')
+    %hr
+
+    = form_for(@grade, :url => lecture_assignment_grades_path) do |f|
+      .row
+        .four.columns
+          = f.label :form, _('Format'), :class => 'left four inline'
+          = f.select :form, @forms, {:selected => @grade.form}, {:required => true, :class => 'eight inline'}
+
+        .three.columns.align-right
+          = f.label :mark, _('Grade'), :class => 'left six inline'
+          = f.text_field :mark, {:required => true, :class => 'five right inline'}
+
+        .five.columns.align-right
+          = f.label :receiver_id, _('User'), :class => 'left three inline'
+          = f.select :receiver_id, @members, {}, {:required => true, :class => 'eight right inline'}
+
+      %p
+        = f.label :comment, _('If you have feedback to add, fill in below')
+        = f.text_area :comment, :rows => 4
+
+      %p
+        = f.submit _('Add'), :id => 'submit_grade', :class => 'button primary'
+        = link_to _('Cancel'), lecture_assignment_grades_path, :class => 'pull right'
+
+  = render(:partial => 'sidebar')

@@ -1,0 +1,15 @@
+= title  _('Timeline for %s') % @classroom.title
+
+#activities
+  .eight.columns
+
+    - if can?(:contribute, @classroom)
+      = form_tag(announce_classroom_path, :id => :announce, :class => 'hide') do
+        = text_area_tag(:announcement, nil, :required => true, :placeholder => _('Post an announcement for this classroom...'))
+        .row
+          .twelve.columns
+            = submit_tag(_('Publish'), :class => 'button small primary', :id => :submit_announcement)
+
+    = render(:partial => 'shared/timeline')
+
+  = render(:partial => 'sidebar')

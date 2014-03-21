@@ -1,0 +1,19 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  database: 'db/development.sqlite3'
+  timeout: 5000
+
+production: &production
+  adapter: postgresql
+  encoding: unicode
+  database: courseware_production
+  pool: 5
+  username: courseware
+  password:
+  host: localhost
+
+development:
+  <<: *sqlite
+
+test:
+  <<: *sqlite

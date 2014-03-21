@@ -1,0 +1,37 @@
+= title _('%s classroom syllabus') % @classroom.title
+
+#syllabus
+  .eight.columns.formatted
+    - unless @syllabus.new_record?
+      %h3
+        = @syllabus.title
+
+      - unless @syllabus.intro.blank?
+        .panel
+          %p
+            = auto_oembed simple_format(@syllabus.intro)
+
+      = auto_oembed(@syllabus.content).html_safe
+
+    - else
+      %h4
+        = _('Not updated yet')
+      %hr
+        - if can?(:create, @syllabus)
+          = link_to(_('Update the syllabus now'), edit_syllabus_path, :class => 'button primary syllabus-create')
+        - else
+          %p
+            = _('None of the classroom collaborators managed to update the syllabus.')
+          %p
+            = _('Please check back again in a while.')
+
+    - unless @lectures.blank?
+
+      %h3
+        %i.left.icon-structure
+        = _('Course structure')
+
+      %ul#lectures-tree.hierarchical-list
+        = list_lectures_tree(@lectures)
+
+  = render(:partial => 'sidebar')

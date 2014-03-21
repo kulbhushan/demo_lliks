@@ -1,0 +1,36 @@
+= title _('Create a new lecture')
+= head_embed javascript_include_tag('editor')
+= head_embed stylesheet_link_tag('editor')
+= breadcrumbs(render('editor_breadcrumbs'))
+
+#lecture
+  .eight.columns
+
+    = form_for(@lecture, :url => lectures_path) do |f|
+      %p
+        = f.label :title, _('Title')
+        = f.text_field :title, :required => true
+
+      .row
+        .eight.columns
+          = f.label :parent_lecture_id, _('Parent lecture')
+          = select_tag 'lecture[parent_lecture_id]', list_lecture_options(@lectures), { :prompt => _('No parent lecture') }
+        .three.offset-by-one.columns
+          = f.label :position, _('Lecture position')
+          = f.number_field :position, :class => 'five'
+
+      %p
+        = f.label :requisite, _('Requisites')
+        = f.text_area :requisite, :class => 'wysiwyg-minimal', :required => true
+
+      %p
+        = f.label :content, _('Content')
+        = f.text_area :content, :class => 'wysiwyg-full', :required => true
+
+      %p
+        = hidden_field_tag :assetable_type, @lecture.class, :class => 'assetable_type'
+        = hidden_field_tag :assetable_id, @lecture.id, :class => 'assetable_id'
+        = f.submit _('Create'), :id => 'submit_lecture', :class => 'button primary'
+        = link_to _('Cancel'), syllabus_path, :class => 'pull right'
+
+  = render('editor_sidebar')
